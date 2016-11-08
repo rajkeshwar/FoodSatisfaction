@@ -1,17 +1,24 @@
-package com.techolution;
+package com.restaurant;
 
 import java.io.FileNotFoundException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Demo {
+/**
+ * @author Rajkeshwar Prasad
+ *
+ */
+public class RestaurantDemo {
 	
 	public static void main(String[] args) {
 		
-		final String INPUT_FILE_PATH = "C:\\fileread\\input-data.txt";
+		final String INPUT_FILE_PATH = "restaurant-data.txt";
+		URL url = RestaurantDemo.class.getClassLoader().getResource(INPUT_FILE_PATH);
+		
 		List<Food> foodList = new ArrayList<Food>();
-		FoodFileParser foodFileParser = new FoodFileParser(INPUT_FILE_PATH);
+		FoodFileParser foodFileParser = new FoodFileParser(url.getPath());
 		
 		try {
 			foodList = foodFileParser.fileToFoodList();
@@ -34,13 +41,21 @@ public class Demo {
 			System.out.println(satisfactions[i] + " - " + times[i]);
 		}
 	    
+	    System.out.println("=================================");
+	    
 	    FoodSatisfaction  foodSatisfaction = new FoodSatisfaction();
-	    int maxValue = foodSatisfaction.findMaxSatisfaction(satisfactions, times, foodFileParser.getMaxTime(), foodFileParser.getFoodCount());
+	    int maxValue = foodSatisfaction.findMaxSatisfaction(
+	    		satisfactions, times, foodFileParser.getMaxTime(), foodFileParser.getFoodCount());
 	    
 	    System.out.println("Maximum satisfaction is : " + maxValue);
 		
 	}
 	
+	/**
+	 * @param list; List<Integer>
+	 * 	Takes list of Integer as input and return the primitive `int` array
+	 * @return
+	 */
 	private static int[] toArray(List<Integer> list) {
 		int[] ret = new int[list.size()];
 		int i = 0;

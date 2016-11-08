@@ -1,7 +1,18 @@
-package com.techolution;
+package com.restaurant;
 
+/**
+ * @author Rajkeshwar Prasad
+ *
+ */
 public class FoodSatisfaction {
 
+	/**
+	 * @param satisfaction : int[] satisfaction as int array
+	 * @param times        : int[] time taken as int array
+	 * @param totalTime    : Total given time
+	 * @param itemCount    : No of items count
+	 * @return             : Return the maximum satisfaction as integer
+	 */
 	public int findMaxSatisfaction(int satisfaction[], int times[], int totalTime,
 			int itemCount) {
 		
@@ -43,6 +54,11 @@ public class FoodSatisfaction {
 		return V[itemCount][totalTime];
 	}
 
+	/**
+	 * @param V : Two dimensional int array 
+	 * Takes the matrix as input and prints in table 
+	 * format on console.
+	 */
 	private void printMatrix(int[][] V) {
 		for (int[] rows : V) {
 			for (int col : rows) {

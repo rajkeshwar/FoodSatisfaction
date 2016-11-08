@@ -1,7 +1,11 @@
-package com.techolution;
+package com.restaurant;
 
+/**
+ * @author Rajkeshwar Prasad
+ *
+ */
 public class Food {
-	
+	  
 	private int timeTaken;
 	private int satisfaction;
 	
